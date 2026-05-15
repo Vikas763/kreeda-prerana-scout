@@ -61,6 +61,7 @@ function AthletesPage() {
   });
 
   return (
+    <div className="ambient-mesh min-h-[calc(100vh-3.5rem)]">
     <div className="mx-auto max-w-6xl px-4 py-6 md:px-8 md:py-12 animate-fade-in">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
