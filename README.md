@@ -79,18 +79,9 @@ Athlete ranking system
 Injury tracking and recovery monitoring
 Export athlete reports as PDF
 
-Screenshots
-Dashboard View
-
-(Add dashboard screenshot here)
-
-Athlete Registration
-
-(Add athlete registration screenshot here)
-
 Live Demo
 
-Deployment link will be added after hosting.
+https://kreeda-spark-scout.lovable.app/
 
 Author
 
