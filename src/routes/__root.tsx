@@ -76,12 +76,15 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SidebarProvider>
-          <div className="min-h-screen flex w-full bg-gradient-surface">
+          <div className="min-h-screen flex w-full bg-background">
             <AppSidebar />
-            <div className="flex-1 flex flex-col">
-              <header className="h-14 flex items-center gap-3 border-b border-border/60 bg-background/60 px-4 backdrop-blur sticky top-0 z-10">
+            <div className="flex-1 flex flex-col min-w-0">
+              <header className="h-14 flex items-center gap-3 border-b border-border/40 glass-strong px-4 sticky top-0 z-20">
                 <SidebarTrigger />
-                <span className="text-sm font-medium text-muted-foreground">Kreeda Prerana Scout</span>
+                <span className="text-sm font-semibold tracking-tight font-display">Kreeda Prerana Scout</span>
+                <span className="ml-auto hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Live
+                </span>
               </header>
               <main className="flex-1"><Outlet /></main>
             </div>

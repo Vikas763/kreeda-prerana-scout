@@ -61,6 +61,7 @@ function AthletesPage() {
   });
 
   return (
+    <div className="ambient-mesh min-h-[calc(100vh-3.5rem)]">
     <div className="mx-auto max-w-6xl px-4 py-6 md:px-8 md:py-12 animate-fade-in">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
@@ -151,6 +152,7 @@ function AthletesPage() {
         </AlertDialogContent>
       </AlertDialog>
     </div>
+    </div>
   );
 }
 
@@ -159,14 +161,15 @@ function AthleteCard({
 }: { athlete: Athlete; onEdit: () => void; onDelete: () => void }) {
   const initials = athlete.name.split(" ").map((s) => s[0]).slice(0, 2).join("").toUpperCase();
   return (
-    <Card className="group relative overflow-hidden border-border/60 bg-card/80 backdrop-blur shadow-card hover-lift">
-      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition group-hover:opacity-100" />
+    <Card className="group relative overflow-hidden glass border-border/40 hover-lift">
+      <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full bg-gradient-to-br from-primary/30 to-primary-glow/20 blur-2xl opacity-60 transition group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition group-hover:opacity-100" />
       <CardHeader className="flex flex-row items-start gap-3 pb-3">
         <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant">
           {initials || "?"}
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="truncate text-lg font-semibold leading-tight">{athlete.name}</h3>
+          <h3 className="truncate text-lg font-semibold leading-tight font-display">{athlete.name}</h3>
           <Badge variant="secondary" className="mt-1 bg-accent text-accent-foreground">
             {athlete.sport}
           </Badge>
@@ -191,30 +194,36 @@ function AthleteCard({
 
 function Metric({ icon: Icon, label, value }: { icon: React.ComponentType<{ className?: string }>; label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-border/60 bg-muted/40 p-3 transition group-hover:bg-muted/70">
-      <div className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-muted-foreground">
+    <div className="rounded-xl border border-border/40 bg-background/40 backdrop-blur p-3 transition group-hover:border-primary/30 group-hover:bg-background/60">
+      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-muted-foreground">
         <Icon className="h-3 w-3" /> {label}
       </div>
-      <div className="mt-1 text-lg font-semibold">{value}</div>
+      <div className="mt-1 text-lg font-semibold tabular-nums font-display">{value}</div>
     </div>
   );
 }
 
 function EmptyState({ hasAny }: { hasAny: boolean }) {
   return (
-    <div className="rounded-2xl border border-dashed border-border bg-card/40 p-12 text-center animate-fade-in-up">
-      <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-primary text-primary-foreground shadow-elegant animate-float">
-        <UserPlus className="h-7 w-7" />
+    <div className="relative overflow-hidden rounded-3xl glass border-border/40 p-12 text-center animate-fade-in-up">
+      <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
+      <div className="relative">
+        <div className="relative mx-auto h-20 w-20">
+          <div className="absolute inset-0 rounded-3xl bg-gradient-primary blur-2xl opacity-50 animate-pulse-glow" />
+          <div className="relative grid h-20 w-20 place-items-center rounded-3xl bg-gradient-primary text-primary-foreground shadow-elegant animate-float">
+            <UserPlus className="h-9 w-9" />
+          </div>
+        </div>
+        <h3 className="mt-6 text-xl font-semibold font-display">{hasAny ? "No matches found" : "Your roster awaits"}</h3>
+        <p className="mt-2 text-sm text-muted-foreground max-w-sm mx-auto">
+          {hasAny ? "Try a different name, sport, or filter to find your athlete." : "Register your first athlete to start uncovering performance insights."}
+        </p>
+        {!hasAny && (
+          <Button asChild className="mt-6 bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
+            <Link to="/register"><UserPlus className="mr-2 h-4 w-4" />Register first athlete</Link>
+          </Button>
+        )}
       </div>
-      <h3 className="mt-5 text-lg font-semibold">{hasAny ? "No matches found" : "No athletes yet"}</h3>
-      <p className="mt-1 text-sm text-muted-foreground">
-        {hasAny ? "Try a different name, sport, or filter." : "Register your first athlete to start scouting."}
-      </p>
-      {!hasAny && (
-        <Button asChild className="mt-5 bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
-          <Link to="/register"><UserPlus className="mr-2 h-4 w-4" />Register athlete</Link>
-        </Button>
-      )}
     </div>
   );
 }
