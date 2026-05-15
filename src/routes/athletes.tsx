@@ -152,6 +152,7 @@ function AthletesPage() {
         </AlertDialogContent>
       </AlertDialog>
     </div>
+    </div>
   );
 }
 
