@@ -169,7 +169,7 @@ function AthleteCard({
           {initials || "?"}
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="truncate text-lg font-semibold leading-tight">{athlete.name}</h3>
+          <h3 className="truncate text-lg font-semibold leading-tight font-display">{athlete.name}</h3>
           <Badge variant="secondary" className="mt-1 bg-accent text-accent-foreground">
             {athlete.sport}
           </Badge>
