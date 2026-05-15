@@ -194,11 +194,11 @@ function AthleteCard({
 
 function Metric({ icon: Icon, label, value }: { icon: React.ComponentType<{ className?: string }>; label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-border/60 bg-muted/40 p-3 transition group-hover:bg-muted/70">
-      <div className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-muted-foreground">
+    <div className="rounded-xl border border-border/40 bg-background/40 backdrop-blur p-3 transition group-hover:border-primary/30 group-hover:bg-background/60">
+      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-muted-foreground">
         <Icon className="h-3 w-3" /> {label}
       </div>
-      <div className="mt-1 text-lg font-semibold">{value}</div>
+      <div className="mt-1 text-lg font-semibold tabular-nums font-display">{value}</div>
     </div>
   );
 }
