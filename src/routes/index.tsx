@@ -30,7 +30,7 @@ function Dashboard() {
     : null;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 md:px-8 md:py-12">
+    <div className="mx-auto max-w-6xl px-4 py-6 md:px-8 md:py-12 animate-fade-in">
       <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-sm font-medium uppercase tracking-widest text-primary">Scouting Dashboard</p>
@@ -106,7 +106,7 @@ function StatCard({
   hint: string;
 }) {
   return (
-    <Card className="border-border/60 shadow-card transition hover:-translate-y-0.5 hover:shadow-elegant">
+    <Card className="border-border/60 bg-card/80 backdrop-blur shadow-card hover-lift">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">{label}</CardTitle>
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-accent-foreground">
