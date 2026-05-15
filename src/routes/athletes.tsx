@@ -205,19 +205,25 @@ function Metric({ icon: Icon, label, value }: { icon: React.ComponentType<{ clas
 
 function EmptyState({ hasAny }: { hasAny: boolean }) {
   return (
-    <div className="rounded-2xl border border-dashed border-border bg-card/40 p-12 text-center animate-fade-in-up">
-      <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-primary text-primary-foreground shadow-elegant animate-float">
-        <UserPlus className="h-7 w-7" />
+    <div className="relative overflow-hidden rounded-3xl glass border-border/40 p-12 text-center animate-fade-in-up">
+      <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
+      <div className="relative">
+        <div className="relative mx-auto h-20 w-20">
+          <div className="absolute inset-0 rounded-3xl bg-gradient-primary blur-2xl opacity-50 animate-pulse-glow" />
+          <div className="relative grid h-20 w-20 place-items-center rounded-3xl bg-gradient-primary text-primary-foreground shadow-elegant animate-float">
+            <UserPlus className="h-9 w-9" />
+          </div>
+        </div>
+        <h3 className="mt-6 text-xl font-semibold font-display">{hasAny ? "No matches found" : "Your roster awaits"}</h3>
+        <p className="mt-2 text-sm text-muted-foreground max-w-sm mx-auto">
+          {hasAny ? "Try a different name, sport, or filter to find your athlete." : "Register your first athlete to start uncovering performance insights."}
+        </p>
+        {!hasAny && (
+          <Button asChild className="mt-6 bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
+            <Link to="/register"><UserPlus className="mr-2 h-4 w-4" />Register first athlete</Link>
+          </Button>
+        )}
       </div>
-      <h3 className="mt-5 text-lg font-semibold">{hasAny ? "No matches found" : "No athletes yet"}</h3>
-      <p className="mt-1 text-sm text-muted-foreground">
-        {hasAny ? "Try a different name, sport, or filter." : "Register your first athlete to start scouting."}
-      </p>
-      {!hasAny && (
-        <Button asChild className="mt-5 bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
-          <Link to="/register"><UserPlus className="mr-2 h-4 w-4" />Register athlete</Link>
-        </Button>
-      )}
     </div>
   );
 }
