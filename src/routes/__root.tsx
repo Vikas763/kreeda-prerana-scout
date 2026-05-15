@@ -52,6 +52,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Kreeda Prerana Scout — Athlete Scouting Platform" },
       { name: "description", content: "Scout, track and analyze athlete performance with Kreeda Prerana Scout." },
+      { property: "og:title", content: "Kreeda Prerana Scout — Athlete Scouting Platform" },
+      { name: "twitter:title", content: "Kreeda Prerana Scout — Athlete Scouting Platform" },
+      { property: "og:description", content: "Scout, track and analyze athlete performance with Kreeda Prerana Scout." },
+      { name: "twitter:description", content: "Scout, track and analyze athlete performance with Kreeda Prerana Scout." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/521a1d0a-2f57-4c6b-b088-2e7aeae5b1dd/id-preview-35a7c356--771e8dc3-9e24-4240-b42d-77b29ad6dc16.lovable.app-1778829673794.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/521a1d0a-2f57-4c6b-b088-2e7aeae5b1dd/id-preview-35a7c356--771e8dc3-9e24-4240-b42d-77b29ad6dc16.lovable.app-1778829673794.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
@@ -76,15 +84,12 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <SidebarProvider>
-          <div className="min-h-screen flex w-full bg-background">
+          <div className="min-h-screen flex w-full bg-gradient-surface">
             <AppSidebar />
-            <div className="flex-1 flex flex-col min-w-0">
-              <header className="h-14 flex items-center gap-3 border-b border-border/40 glass-strong px-4 sticky top-0 z-20">
+            <div className="flex-1 flex flex-col">
+              <header className="h-14 flex items-center gap-3 border-b border-border/60 bg-background/60 px-4 backdrop-blur sticky top-0 z-10">
                 <SidebarTrigger />
-                <span className="text-sm font-semibold tracking-tight font-display">Kreeda Prerana Scout</span>
-                <span className="ml-auto hidden sm:inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" /> Live
-                </span>
+                <span className="text-sm font-medium text-muted-foreground">Kreeda Prerana Scout</span>
               </header>
               <main className="flex-1"><Outlet /></main>
             </div>
