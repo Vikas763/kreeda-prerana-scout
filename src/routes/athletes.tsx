@@ -161,8 +161,9 @@ function AthleteCard({
 }: { athlete: Athlete; onEdit: () => void; onDelete: () => void }) {
   const initials = athlete.name.split(" ").map((s) => s[0]).slice(0, 2).join("").toUpperCase();
   return (
-    <Card className="group relative overflow-hidden border-border/60 bg-card/80 backdrop-blur shadow-card hover-lift">
-      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition group-hover:opacity-100" />
+    <Card className="group relative overflow-hidden glass border-border/40 hover-lift">
+      <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full bg-gradient-to-br from-primary/30 to-primary-glow/20 blur-2xl opacity-60 transition group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition group-hover:opacity-100" />
       <CardHeader className="flex flex-row items-start gap-3 pb-3">
         <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-primary text-base font-semibold text-primary-foreground shadow-elegant">
           {initials || "?"}
