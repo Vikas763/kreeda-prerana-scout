@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { athleteSchema, createAthlete, type AthleteInput } from "@/lib/athletes";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
-import { UserPlus } from "lucide-react";
+import { UserPlus, Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
@@ -47,7 +47,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8 md:px-8 md:py-12">
+    <div className="mx-auto max-w-2xl px-4 py-6 md:px-8 md:py-12 animate-fade-in">
       <div className="mb-6 flex items-center gap-3">
         <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-primary text-primary-foreground shadow-elegant">
           <UserPlus className="h-5 w-5" />
@@ -75,8 +75,8 @@ function RegisterPage() {
             </div>
             <div className="flex justify-end gap-3 pt-2">
               <Button type="button" variant="ghost" onClick={() => navigate({ to: "/athletes" })}>Cancel</Button>
-              <Button type="submit" disabled={saving} className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90">
-                {saving ? "Saving..." : "Save athlete"}
+              <Button type="submit" disabled={saving} className="bg-gradient-primary text-primary-foreground shadow-elegant hover:opacity-90 min-w-32">
+                {saving ? (<><Loader2 className="mr-2 h-4 w-4 animate-spin" />Saving...</>) : "Save athlete"}
               </Button>
             </div>
           </form>
